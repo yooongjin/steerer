@@ -76,6 +76,9 @@ def parse_args():
                     help='experiment configure file name',
                     required=True,
                     type=str)
+    parser.add_argument('--img',
+                        required=True, 
+                        type=str)
     parser.add_argument('opts',
                         help="Modify config options using the command-line",
                         default=None,
@@ -166,7 +169,7 @@ def main():
     gt_restults = []
     model = model.half().cuda()
     model.eval()
-    img_path = "/home/cho092871/Desktop/Networks/STEERER/Itaewon_test/이태원4.jpg"
+    img_path = args.img
     img_file = os.path.basename(img_path)
     with torch.no_grad():
         cv_image = cv2.imread(img_path, cv2.IMREAD_COLOR)

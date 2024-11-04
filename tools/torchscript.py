@@ -103,19 +103,19 @@ def parse_args():
 
     return args
 
-img = "/home/cho092871/Desktop/Datasets/Itaewon_ver2.0/imgs/CCTV-views/IMG_1000.jpeg"
-cv_image = cv2.imread(img, cv2.IMREAD_COLOR)
-height, width, _ = cv_image.shape
-cv_image = cv2.resize(cv_image, dsize=(width//4, height//4))
-cv_image = check_img(cv_image, 32)
-input_image = input_transform(cv_image)
-input_image = input_image.transpose((2, 0, 1))
-input_image = torch.from_numpy(input_image).unsqueeze(0)
+# img = "/home/cho092871/Desktop/Datasets/Itaewon_ver2.0/imgs/CCTV-views/IMG_1000.jpeg"
+# cv_image = cv2.imread(img, cv2.IMREAD_COLOR)
+# height, width, _ = cv_image.shape
+# cv_image = cv2.resize(cv_image, dsize=(width//4, height//4))
+# cv_image = check_img(cv_image, 32)
+# input_image = input_transform(cv_image)
+# input_image = input_image.transpose((2, 0, 1))
+# input_image = torch.from_numpy(input_image).unsqueeze(0)
 
 class ScriptModule(nn.Module):
     def __init__(self, base_model):
         super().__init__()
-        self.base_model = torch.jit.trace(base_model, input_image.to(base_model.device))
+        self.base_model = torch.jit.trace(base_model, torch.zeros(1, 3, 224, 224).to(base_model.device))
         self.mean = nn.Parameter(torch.tensor([0.485, 0.456, 0.406]), requires_grad=False)
         self.std = nn.Parameter(torch.tensor([0.229, 0.224, 0.225]), requires_grad=False)
         
@@ -193,7 +193,7 @@ def main():
     script_model = script_model.cuda().eval()
     script_model = torch.jit.script(script_model)
     
-    script_model.save('steerer.pt')
+    script_model.save('torchscript_steerer.pt')
     
    
     
