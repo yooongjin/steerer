@@ -1,0 +1,18 @@
+# created by virtualenv automatically
+/__pycache__/*
+*.o
+*.e
+*.out
+job/
+exp/
+scale_generalization/
+.vscode/
+*.mp4
+*.png
+*.pt
+*.pth
+*.pickle
+*.MP4
+*.THM
+*.filepart
+*.jpg
