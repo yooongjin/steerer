@@ -17,6 +17,9 @@ python tools/torchscript.py --cfg configs/QNRF_final.py --checkpoint pretrained/
 
 ## Reproduce Counting and Localization Performance
 
+이태원에서 UCF-QNRF 성능이 가장 좋았었습니다.
+
+
 |            | Dataset     |  MAE/MSE |   F1-m./Pre./Rec. (%) | Pretraied Model | Dataset |
 |------------|-------- |-------|-------|-------|------|
 | This Repo      |  SHHB   | 5.8/8.5 |87.0/89.4/84.82.01 | [weights](https://pjlab-my.sharepoint.cn/:u:/g/personal/hantao_dispatch_pjlab_org_cn/ET5_eR8n2e5Akm19QvajQJcBTbryGy545hImwr2yzeKMSw?e=J9mwUY)| [Dataset](https://pjlab-my.sharepoint.cn/:u:/g/personal/hantao_dispatch_pjlab_org_cn/Ebo6dbV4hnlCtzFo3S5KW-ABwlCLLYWYADLOyYMGWJ6Qrw?e=L0Y0Wi)|
